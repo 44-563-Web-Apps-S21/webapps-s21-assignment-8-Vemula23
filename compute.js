@@ -22,10 +22,12 @@ const server =
           console.log("Look for query parameter data: " + search_params.get("data"))
 
           // Process the queries here
-          let num = search_params.get("num1")
+          var num = search_params.get("num1")
+          var num2 = search_params.get("num2")
           res.statusCode = 200      //code for OK
           res.setHeader('Content-Type', 'text/plain') 
           res.write(`Math.floor(${num}) is ${Math.floor(num)}\n`)
+          res.write(`Math.floor(${num2}) is ${Math.floor(num2)}\n`)
           res.write(`Math.cosh(${num}) is ${Math.cosh(num)}\n`)
           res.write(`Math.log2(${num}) is ${Math.log2(num)}\n`)
           res.end();

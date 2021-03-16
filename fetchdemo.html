@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>first page on Node JS</title>
+</head>
+
+<body>
+    <h1>Venkatesh Vemula computes</h1>
+    <input type="number" id="first_num" name="first_num">
+    <input type="number" id="sec_num" name="sec_num">
+    <button type="button" id="tap" onclick="remotecompute()">Remote compute</button>
+    <div id="result"> Result will display here</div>
+
+</body>
+<script>
+    function remotecompute() {
+        var number1 = document.getElementById("first_num").value;
+        var number2 = document.getElementById("sec_num").value;
+        console.log(number1)
+        fetch(`http://127.0.0.1:3001/?num1=${number1}&num2=${number2}`).then( (resp) => { return resp.text()}) .then (text =>{
+                    console.log(text);
+
+
+            document.getElementById("result").innerHTML = text;
+        }).catch(error =>{
+                    document.getElementById("result").innerHTML=error;
+                })
+            }
+
+</script>
+
+</html>
